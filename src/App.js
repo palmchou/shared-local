@@ -1,28 +1,33 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import CssBaseline from '@material-ui/core/CssBaseline';
+import 'typeface-roboto';
+import {MuiThemeProvider, createMuiTheme} from '@material-ui/core/styles';
+import red from '@material-ui/core/colors/red';
+import deepOrange from '@material-ui/core/colors/deepOrange';
 
-class App extends Component {
+import ShareDApp from "./comp/ShareDApp"
+// import CPCMain from "./layout/CPCMain"
+
+const theme = createMuiTheme({
+    palette: {
+      primary: deepOrange,
+      secondary: red,
+    },
+    typography: {
+      useNextVariants: true,
+    },
+  }
+);
+
+export default class App extends React.Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <React.Fragment>
+        <CssBaseline/>
+        <MuiThemeProvider theme={theme}>
+          <ShareDApp/>
+        </MuiThemeProvider>
+      </React.Fragment>
     );
   }
 }
-
-export default App;
