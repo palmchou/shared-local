@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import ShareDAppBar from "./ShareDAppBar"
 import ShareDDrawer from "./ShareDDrawer"
 import SharedArticleListContainer from "./SharedArticleListContainer"
+import ShareDMDEditorContainer from "./ShareDMDEditorContainer"
 import {withStyles} from "@material-ui/core/styles/index";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
@@ -32,7 +33,7 @@ class ShareDApp extends React.Component {
           <div className={classes.toolbar} />
           <Route exact path="/" component={props => <SharedArticleListContainer header='All Articles' />} />
           <Route path="/recent" component={props => <SharedArticleListContainer header='Recent Articles' />} />
-          <Route path="/valued" component={props => <SharedArticleListContainer header='Valued Articles' />} />
+          <Route path="/valued" component={props => <ShareDMDEditorContainer header='Valued Articles' />} />
         </main>
       </div>
       </Router>
