@@ -6,6 +6,7 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import CardActions from '@material-ui/core/CardActions';
 import Button from '@material-ui/core/Button';
+import {Link} from "react-router-dom";
 
 const drawerWidth = 240;
 
@@ -17,6 +18,9 @@ const styles = theme => ({
   },
   entry: {
     margin: '20px 20px',
+  },
+  title: {
+    textDecoration: 'initial'
   }
 });
 
@@ -60,7 +64,7 @@ function ShareDArticleEntry(props) {
   return (
     <Card className={classes.entry}>
       <CardContent>
-        <Typography variant="h5" component="h2">
+        <Typography variant="h5" component={Link} to={'/r/' + article.hashID} className={classes.title}>
           {article.title}
         </Typography>
         <Typography className={classes.pos} color="textSecondary">
@@ -71,7 +75,7 @@ function ShareDArticleEntry(props) {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Read More</Button>
+        <Button size="small" component={Link} to={'/r/' + article.hashID}>Read More</Button>
       </CardActions>
     </Card>
   );
@@ -94,11 +98,11 @@ class ShareDArticleList extends React.Component {
           return (
           <React.Fragment>
           {
-            articles.map((article) => (
-            <ShareDArticleEntry classes={classes} article={article}/>
+            articles.map((article, i) => (
+            <ShareDArticleEntry classes={classes} article={article} key={i}/>
           ))
         }
-        <ShareDArticleEntryExample classes={classes} article={exampleArticle}/>
+        {/*<ShareDArticleEntryExample classes={classes} article={exampleArticle}/>*/}
       </React.Fragment>
     );
   }
@@ -106,7 +110,7 @@ class ShareDArticleList extends React.Component {
 
 ShareDArticleList.propTypes = {
   classes: PropTypes.object.isRequired,
-  articles: PropTypes.object.isRequired,
+  articles: PropTypes.array.isRequired,
 };
 
 ShareDArticleList.defaultProps = {

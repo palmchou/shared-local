@@ -11,24 +11,6 @@ const styles = theme => ({
 
 });
 
-const articles = [
-  {
-    title: "This is the title of the test article specified by prop",
-    author: "Test Bot",
-    brief: "Nothing here.",
-  },
-  {
-    title: "Hello World",
-    author: "Test Bot II",
-    brief: "Nothing here either.",
-  },
-  {
-    title: "How to create multiple page app using react",
-    author: "Shuai Zhou",
-    brief: "I have created a single page web app using react js. I have used webpack to create bundle of all components. But now I want to create many other pages. Most of pages are API call related.",
-  },
-];
-
 class SharedArticleListContainer extends React.Component {
 
   state = {
@@ -36,7 +18,7 @@ class SharedArticleListContainer extends React.Component {
   };
 
   render() {
-    const {classes, header} = this.props;
+    const {classes, header, articles} = this.props;
     return (
       <div>
         <Typography variant="h6" color="inherit">
@@ -51,6 +33,7 @@ class SharedArticleListContainer extends React.Component {
 SharedArticleListContainer.propTypes = {
   classes: PropTypes.object.isRequired,
   header: PropTypes.string.isRequired,
+  articles: PropTypes.array.isRequired,
 };
 
 export default withStyles(styles)(SharedArticleListContainer);
