@@ -9,6 +9,8 @@ import Paper from '@material-ui/core/Paper';
 import ShareDMDEditorContainer from "./ShareDMDEditorContainer"
 import Markdown from "./markdown"
 import textMarkdown from './text.md';
+import {contentDown} from '../lib/ContentUpDown'
+
 
 const styles = theme => ({
   content: {
@@ -25,19 +27,17 @@ class ShareDArticleDetailPage extends React.Component {
       contentMD: "",
       articleObj: props.articleMap(props.match.params.hashID)
     };
-    this.handleClick();
+    this.loadContent();
   }
 
-  handleClick = () => {
-    fetch(textMarkdown)
-      .then((r) => r.text())
-      .then(text => {
-        console.log(text);
-        this.setState({
-          contentMD: text
-        })
+  loadContent() {
+    console.log('Content Hash: ' + this.state.articleObj.contentHash);
+    contentDown(this.state.articleObj.contentHash, (content) => {
+      this.setState({
+        contentMD: content
       })
-  };
+    });
+  }
 
   render() {
     const {classes} = this.props;

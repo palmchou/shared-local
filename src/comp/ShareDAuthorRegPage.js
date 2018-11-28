@@ -19,7 +19,19 @@ const styles = theme => ({
 class ShareDAuthorRegPage extends React.Component {
 
   state = {
-    // archivedListOpen: false,
+    name: "",
+    email: "",
+  };
+
+  handleAuthorRegister = () => {
+    console.log(this.state.name);
+    console.log(this.state.email);
+  };
+
+  handleChange = name => event => {
+    this.setState({
+      [name]: event.target.value,
+    });
   };
 
   render() {
@@ -36,19 +48,23 @@ class ShareDAuthorRegPage extends React.Component {
             helperText="The length of name is limited to 20 characters."
             fullWidth
             margin="normal"
+            value={this.state.name}
             inputProps={{maxLength: 20}}
+            onChange={this.handleChange("name")}
           />
-          {/*<TextField*/}
-            {/*id="briefIntro"*/}
-            {/*label="Brief Introduction"*/}
-            {/*multiline*/}
-            {/*rowsMax="4"*/}
-            {/*fullWidth*/}
-            {/*margin="normal"*/}
-            {/*helperText="The length of brief introduction is limited to 360 characters."*/}
-            {/*inputProps={{maxLength: 360}}*/}
-          {/*/>*/}
-          <Button variant="contained" color="secondary" className={classes.submitButton}>
+          <TextField
+            id="email"
+            label="E-mail"
+            fullWidth
+            margin="normal"
+            value={this.state.email}
+            helperText="You can set an email address if you like."
+            inputProps={{maxLength: 30}}
+            onChange={this.handleChange("email")}
+            autoComplete="email"
+            type="email"
+          />
+          <Button variant="contained" color="secondary" className={classes.submitButton} onClick={this.handleAuthorRegister} >
             Submit
           </Button>
         </form>

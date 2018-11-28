@@ -26,22 +26,25 @@ const styles = theme => ({
 
 const articles = [
   {
-    title: "This is the title of the test article specified by prop",
-    author: "Test Bot",
-    brief: "Nothing here.",
+    title: "Markdown Syntax",
+    author: "Shuai Zhou",
+    brief: "A summary of markdown syntax with example provided.",
     hashID: "1-1",
+    contentHash: "QmZxfHdRH656Bpk63hKgy54i7sRxFNkaqrtWyxvpJTTUvY"
   },
   {
     title: "Hello World",
     author: "Test Bot II",
     brief: "Nothing here either.",
     hashID: "2-1",
+    contentHash: "QmVfuiq3eymcZvQJBUc1oLJ6DARVy9cw8vht59pt5TE448",
   },
   {
     title: "How to create multiple page app using react",
     author: "Shuai Zhou",
     brief: "I have created a single page web app using react js. I have used webpack to create bundle of all components. But now I want to create many other pages. Most of pages are API call related.",
     hashID: "3-1",
+    contentHash: "QmbsW3CrGUmVwBrHpEZPJEycQo3zbwgMWz3KKUjkd6asSP",
   },
 ];
 

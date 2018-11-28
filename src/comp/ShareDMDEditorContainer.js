@@ -17,10 +17,11 @@ class SharedMDEditorContainer extends React.Component {
   };
 
   render() {
-    const {classes} = this.props;
+    const {classes, handleContentChange, content} = this.props;
     return (
       <SimpleMDE
-        onChange={this.handleChange}
+        onChange={handleContentChange}
+        value={content}
         options={{
           toolbar: ["bold", "italic", "heading", "strikethrough", "|",
                     "quote", "unordered-list", "ordered-list", "|",

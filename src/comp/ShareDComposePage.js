@@ -6,6 +6,8 @@ import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import ShareDMDEditorContainer from "./ShareDMDEditorContainer"
+import {contentUp} from '../lib/ContentUpDown'
+
 
 const styles = theme => ({
   editorLabel: {
@@ -20,6 +22,15 @@ class ShareDComposePage extends React.Component {
 
   state = {
     // archivedListOpen: false,
+    content: ""
+  };
+
+  submitHandler = () => {
+    contentUp(this.state.content)
+  };
+
+  handleContentChange = value => {
+    this.setState({ content: value });
   };
 
   render() {
@@ -51,8 +62,8 @@ class ShareDComposePage extends React.Component {
           <div className={classes.editorLabel}>
           <FormLabel>Main Content</FormLabel>
           </div>
-          <ShareDMDEditorContainer/>
-          <Button variant="contained" color="secondary" className={classes.submitButton}>
+          <ShareDMDEditorContainer content={this.state.content} handleContentChange={this.handleContentChange}/>
+          <Button variant="contained" color="secondary" className={classes.submitButton} onClick={this.submitHandler}>
             Submit
           </Button>
         </form>
